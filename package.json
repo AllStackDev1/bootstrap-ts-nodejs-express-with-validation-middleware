@@ -1,0 +1,60 @@
+{
+  "name": "bootstrap-ts-nodejs-express-with-validation-middleware",
+  "version": "1.0.0",
+  "description": "A bootstraping backend server project for nodejs using typescript",
+  "main": "dist/app.js",
+  "author": "Chinedu Ekene Okpala <allstackdev@gmail.com>",
+  "repository": "https://github.com/AllStackDev1/bootstrap-ts-nodejs-express-with-validation-middleware.git",
+  "license": "MIT",
+  "scripts": {
+    "dev": "NODE_ENV=DEV nodemon -r tsconfig-paths/register src/bootstrapp.ts",
+    "build": "tsc -p .",
+    "start": "tsc && node dist/app.js",
+    "test": "nyc --all ---reporter=html --reporter=text --reporter=lcov --check-coverage --check-leaks -r tsconfig-paths/register -r ts-node/register --lines 50 mocha -ui tdd --timeout 30000 tests/**/*test.ts --file tests/tear-down.js --exit",
+    "lint": "npx eslint ./src/*.ts"
+  },
+  "dependencies": {
+    "inversify": "^5.1.1",
+    "reflect-metadata": "^0.1.13",
+    "typescript": "^4.3.4"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.19",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "^15.12.4",
+    "@types/supertest": "^2.0.11",
+    "@typescript-eslint/eslint-plugin": "^4.28.0",
+    "@typescript-eslint/parser": "^4.28.0",
+    "chai": "^4.3.4",
+    "eslint": "^7.29.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "mocha": "^9.0.1",
+    "nodemon": "^2.0.7",
+    "nyc": "^15.1.0",
+    "prettier": "^2.3.1",
+    "supertest": "^6.1.3",
+    "ts-node": "^10.0.0",
+    "tsconfig-paths": "^3.9.0",
+    "tslint-microsoft-contrib": "^6.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts}": [
+      "eslint --fix src",
+      "git add .",
+      "git commit -m'lint files'"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add .",
+      "git commit -m'lint files'"
+    ]
+  }
+}
