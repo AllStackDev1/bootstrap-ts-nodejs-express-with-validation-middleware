@@ -1,2 +1,2 @@
 export { default as AppContants } from './constants'
-export { default as AppLogger } from './logger'
+export { default as logger } from './logger'
